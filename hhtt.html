@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdviceHub - Expert Solutions for Your Problems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ffdd40;
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: white;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #6e8efb;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #5a7dfa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .categories {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            font-size: 2.2rem;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-content h3 {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-content p {
+            color: #718096;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            color: #6e8efb;
+            margin-bottom: 1rem;
+        }
+        
+        .request-section {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .request-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .request-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #4a5568;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .footer-section p {
+            color: #cbd5e0;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #6e8efb;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            background: #4a5568;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #6e8efb;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #4a5568;
+            color: #cbd5e0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AdviceHub</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#request">Request Advice</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Expert Advice for Life's Challenges</h1>
+            <p>Get personalized solutions to your problems from our network of experienced advisors. Whatever you're going through, we're here to help.</p>
+            <a href="#request" class="btn">Get Advice Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">How We Can Help You</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Relationship Advice</h3>
+                        <p>Solutions for love, family, friendships, and interpersonal challenges.</p>
+                        <a href="#request" class="btn">Get Help</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Career Guidance</h3>
+                        <p>Advice for job searching, workplace issues, and professional growth.</p>
+                        <a href="#request" class="btn">Get Help</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Financial Issues</h3>
+                        <p>Budgeting, debt management, and financial planning advice.</p>
+                        <a href="#request" class="btn">Get Help</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Mental Health</h3>
+                        <p>Support for stress, anxiety, depression, and emotional well-being.</p>
+                        <a href="#request" class="btn">Get Help</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Home & Family</h3>
+                        <p>Solutions for parenting, household management, and family dynamics.</p>
+                        <a href="#request" class="btn">Get Help</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-content">
+                        <div class="category-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education & Learning</h3>
+                        <p>Advice on studying, course selection, and academic challenges.</p>
+                        <a href="#request" class="btn">Get Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Section -->
+    <section class="request-section" id="request">
+        <div class="container">
+            <h2>Tell Us About Your Problem</h2>
+            <p>Fill out the form below with details about your situation, and we'll connect you with an expert who can provide personalized advice.</p>
+            
+            <div class="form-container">
+                <form id="adviceRequestForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Problem Category</label>
+                        <select id="category" required>
+                            <option value="">Select a category</option>
+                            <option value="relationships">Relationships</option>
+                            <option value="career">Career</option>
+                            <option value="finance">Financial</option>
+                            <option value="mental-health">Mental Health</option>
+                            <option value="family">Home & Family</option>
+                            <option value="education">Education</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="problem">Describe Your Problem</label>
+                        <textarea id="problem" placeholder="Please describe your situation in detail..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-preference">How would you like us to respond?</label>
+                        <select id="contact-preference">
+                            <option value="email">Email</option>
+                            <option value="phone">Phone Call</option>
+                            <option value="video">Video Consultation</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About AdviceHub</h3>
+                    <p>We connect people facing challenges with experienced advisors who provide personalized solutions and guidance.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#categories">Advice Categories</a></li>
+                        <li><a href="#request">Request Advice</a></li>
+                        <li><a href="#">Become an Advisor</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> support@advicehub.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-ADVICE</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Advice Street, Solution City</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AdviceHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('adviceRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const category = document.getElementById('category').value;
+            const problem = document.getElementById('problem').value;
+            const contactPreference = document.getElementById('contact-preference').value;
+            
+            // In a real application, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you ${name}! Your request has been submitted. We'll contact you via ${contactPreference} within 24 hours.`);
+            
+            // Reset the form
+            document.getElementById('adviceRequestForm').reset();
+        });
+    </script>
+</body>
+</html>
